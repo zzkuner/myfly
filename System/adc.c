@@ -70,6 +70,6 @@ void Get_Bat_Voltage(void)
 {
 	u16 Bat_AD;
 	Bat_AD =Get_Adc(ADC_Channel_1);
-	Bat_Voltage = (float)Bat_AD/4096*3.3;
+	Bat_Voltage = (float)Bat_AD/4096*3.3*6.1;
 
 }

@@ -7,6 +7,7 @@
 #include "motor.h"
 #include "servo.h"
 #include "PWM.h"
+#include "beep.h"
 #include "led.h"
 #include "key.h"
 #include "adc.h"

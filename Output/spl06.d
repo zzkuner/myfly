@@ -36,6 +36,7 @@
 ..\output\spl06.o: ..\System\sys.h
 ..\output\spl06.o: ..\Drivers\servo.h
 ..\output\spl06.o: ..\System\PWM.h
+..\output\spl06.o: ..\Drivers\beep.h
 ..\output\spl06.o: ..\Drivers\led.h
 ..\output\spl06.o: ..\Drivers\key.h
 ..\output\spl06.o: ..\System\adc.h

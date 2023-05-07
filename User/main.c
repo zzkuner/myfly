@@ -21,6 +21,7 @@
 ////}
 
 u8 report=1;			//默认开启上报
+int motor1,motor2,servo1,servo2;
 
  int main(void)
  {	 
@@ -32,20 +33,19 @@ u8 report=1;			//默认开启上报
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);	 //设置NVIC中断分组2:2位抢占优先级，2位响应优先级
 	Usart_init();	 	//串口初始化
 	delay_init();	  //延时初始化 delay_ms(1000);
-	 
-
-	
+	BEEP_GPIO_Init(); 
 	Motor_PWM_Init(20000-1, 72-1);
 	Servo_PWM_Init(20000-1, 72-1);
 //	//	int x=10000,y=0;
-//	Motor_Unlock(2000,1000);
+	Motor_Unlock(2000,1000);
+	BEEP_GPIO_High();
 //	delay_ms(1000);
 //	delay_ms(1000);
 	FrSky_Uart2_Init(100000);
 	Adc_Init();
 	SPI1_Init();
 	SPL06_Init();
-//	MPU_IIC_Init(); //MPU使用的IIC初始化
+	MPU_IIC_Init(); //MPU使用的IIC初始化
 
 	 
 //	while(MPU_Init())
@@ -60,47 +60,59 @@ u8 report=1;			//默认开启上报
 // 		delay_ms(200);
 //	} 
 
-
+	BEEP_GPIO_Low();
 
  	while(1)
 	{
 
 //		int i;
-		static float Baro_Buf[20];
-		Baro.Org_Alt = SPL06_Get_Altitude();
-//		//气压原始数据缓存
-////    for(i=19;i>0;i--)
-////    {
-////        Baro_Buf[i]=Baro_Buf[i-1];
-////    }
+//		static float Baro_Buf[20];
+//		Baro.Org_Alt = SPL06_Get_Altitude();
+////		//气压原始数据缓存
+//////    for(i=19;i>0;i--)
+//////    {
+//////        Baro_Buf[i]=Baro_Buf[i-1];
+//////    }
 //    Baro_Buf[0]=Baro.Org_Alt;
 
-		printf("%f\n",Baro.Org_Alt );
-		delay_ms(100);
+//		printf("%f\n",Baro.Org_Alt );
+//		delay_ms(100);
+/********测量电池电压********/
 		
-
-//		Get_Bat_Voltage();
-//		#ifdef Debug
-//		printf("电池电压为 %f \n",Bat_Voltage);
-//		#endif
-//						update_channels();
-//		        printf( "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\r\n", 
-//                channels[0],
-//                channels[1],
-//                channels[2],
-//                channels[3],
-//                channels[4],
-//                channels[5],
-//                channels[6],
-//                channels[7],
-//                channels[8],
-//                channels[9],
-//                channels[10],
-//                channels[11]
-//               );   
-//                 
-//					Motor_PWM_Set();
-
+		Get_Bat_Voltage();
+		if(Bat_Voltage<11)
+		{
+			BEEP_GPIO_High();
+		}
+		else
+		{
+			BEEP_GPIO_Low();
+		}
+////		printf("电池电压为 %f \n",Bat_Voltage);
+		
+/********更新遥控器数据********/		
+		update_channels();
+		
+//		printf( "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\r\n", 
+//				channels[0],
+//				channels[1],
+//				channels[2],
+//				channels[3],
+//				channels[4],
+//				channels[5],
+//				channels[6],
+//				channels[7],
+//				channels[8],
+//				channels[9],
+//				channels[10],
+//				channels[11]
+//			 );   
+/********遥控器控制电机转动********/			
+		motor1=motor2=channels[0]/2+900;		
+		Motor_PWM_Set(motor1,motor2);
+		servo1=channels[1];
+		servo2=channels[2];
+    Servo_PWM_Set(servo1,servo2);
 
 		
 //		if(mpu_dmp_get_data(&pitch,&roll,&yaw)==0)

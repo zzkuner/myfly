@@ -43,6 +43,7 @@
 ..\output\inv_mpu.o: ..\System\sys.h
 ..\output\inv_mpu.o: ..\Drivers\servo.h
 ..\output\inv_mpu.o: ..\System\PWM.h
+..\output\inv_mpu.o: ..\Drivers\beep.h
 ..\output\inv_mpu.o: ..\Drivers\led.h
 ..\output\inv_mpu.o: ..\Drivers\key.h
 ..\output\inv_mpu.o: ..\System\adc.h

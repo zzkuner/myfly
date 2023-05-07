@@ -37,6 +37,7 @@
 ..\output\mpu6050.o: ..\System\sys.h
 ..\output\mpu6050.o: ..\Drivers\servo.h
 ..\output\mpu6050.o: ..\System\PWM.h
+..\output\mpu6050.o: ..\Drivers\beep.h
 ..\output\mpu6050.o: ..\Drivers\led.h
 ..\output\mpu6050.o: ..\Drivers\key.h
 ..\output\mpu6050.o: ..\System\adc.h

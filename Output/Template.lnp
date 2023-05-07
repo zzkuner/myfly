@@ -20,6 +20,7 @@
 "..\output\frsky.o"
 "..\output\adc.o"
 "..\output\spl06.o"
+"..\output\beep.o"
 "..\output\pid.o"
 "..\output\misc.o"
 "..\output\stm32f10x_adc.o"

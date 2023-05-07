@@ -67,10 +67,10 @@ void Servo_PWM_Init(u16 ARR,u16 PSC)
 
 void Servo_PWM_Set(int16_t servo1 , int16_t servo2)
 {
-    if(servo1>2500)servo1=2500;
-    if(servo1<250) servo1=250; 
-    if(servo2>2500)servo2=2500;
-    if(servo2<500)servo2=500;
+//    if(servo1>2500)servo1=2500;
+//    if(servo1<250) servo1=250; 
+//    if(servo2>2500)servo2=2500;
+//    if(servo2<250)servo2=2;
 	
     TIM_SetCompare1(TIM3,servo1);
     TIM_SetCompare2(TIM3,servo2);

@@ -36,6 +36,7 @@
 ..\output\frsky.o: ..\System\sys.h
 ..\output\frsky.o: ..\Drivers\servo.h
 ..\output\frsky.o: ..\System\PWM.h
+..\output\frsky.o: ..\Drivers\beep.h
 ..\output\frsky.o: ..\Drivers\led.h
 ..\output\frsky.o: ..\Drivers\key.h
 ..\output\frsky.o: ..\System\adc.h

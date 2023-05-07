@@ -124,9 +124,9 @@ extern Baro_Parameter Baro;
 #define SP06_FIFO_STS	0x0B
 
 #define SP06_RESET		0x0C
-#define SP06_ID			0x0D
+#define SP06_ID				0x0D
 
-#define SP06_COEF		0x10		//-0x21,12个字节
+#define SP06_COEF				0x10		//-0x21,12个字节
 #define SP06_COEF_SRCE	0x28
 
 

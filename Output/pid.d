@@ -36,6 +36,7 @@
 ..\output\pid.o: ..\System\sys.h
 ..\output\pid.o: ..\Drivers\servo.h
 ..\output\pid.o: ..\System\PWM.h
+..\output\pid.o: ..\Drivers\beep.h
 ..\output\pid.o: ..\Drivers\led.h
 ..\output\pid.o: ..\Drivers\key.h
 ..\output\pid.o: ..\System\adc.h
