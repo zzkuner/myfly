@@ -44,6 +44,8 @@
 ..\output\inv_mpu_dmp_motion_driver.o: ..\System\sys.h
 ..\output\inv_mpu_dmp_motion_driver.o: ..\Drivers\servo.h
 ..\output\inv_mpu_dmp_motion_driver.o: ..\System\PWM.h
+..\output\inv_mpu_dmp_motion_driver.o: ..\System\timer.h
+..\output\inv_mpu_dmp_motion_driver.o: ..\Control\pid.h
 ..\output\inv_mpu_dmp_motion_driver.o: ..\Drivers\beep.h
 ..\output\inv_mpu_dmp_motion_driver.o: ..\Drivers\led.h
 ..\output\inv_mpu_dmp_motion_driver.o: ..\Drivers\key.h

@@ -36,6 +36,8 @@
 ..\output\mpuiic.o: ..\System\sys.h
 ..\output\mpuiic.o: ..\Drivers\servo.h
 ..\output\mpuiic.o: ..\System\PWM.h
+..\output\mpuiic.o: ..\System\timer.h
+..\output\mpuiic.o: ..\Control\pid.h
 ..\output\mpuiic.o: ..\Drivers\beep.h
 ..\output\mpuiic.o: ..\Drivers\led.h
 ..\output\mpuiic.o: ..\Drivers\key.h

@@ -194,16 +194,14 @@ int fgetc(FILE *f)
 
 void USART1_IRQHandler(void)
 {
-    uint16_t Res;
+
 		/*接收中断*/
     //判断是否为USART1的接收中断
 		if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
     {
+			uint16_t Res;
 			Res =USART_ReceiveData(USART1);	//读取接收到的数据
-//			//printf("接收到数据：");
-			USART_SendData(USART1,Res);
-			
-			
+//			USART_ClearITPendingBit(USART1, USART_IT_RXNE);
 		if((USART_RX_STA&0x8000)==0)//接收未完成
 			{
 			if(USART_RX_STA&0x4000)//接收到了0x0d
@@ -212,11 +210,14 @@ void USART1_IRQHandler(void)
 				else 
 					{
 						USART_RX_STA|=0x8000;
+						USART_RX_BUF[USART_RX_STA&0X3FFF]=Res ;
 					}					//接收完成了 
 				}
+			
 			else //还没收到0X0d
 				{	
-				if(Res==0x0d)USART_RX_STA|=0x4000;
+				if(Res==0x0d)
+					USART_RX_STA|=0x4000;
 				else
 					{
 					USART_RX_BUF[USART_RX_STA&0X3FFF]=Res ;
@@ -224,12 +225,8 @@ void USART1_IRQHandler(void)
 					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
 					}		 
 				 }
-			}
-			
-				
-				
-				
-     }   
+			}	
+    }
 		
 		/*发送中断*/
   if(USART_GetITStatus(USART1, USART_IT_TXE) != RESET)
@@ -239,6 +236,6 @@ void USART1_IRQHandler(void)
 			
 			};
     USART_ITConfig(USART1, USART_IT_TXE, DISABLE); //关闭发送中断
-    }   
+  }   
 } 
 #endif	

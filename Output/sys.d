@@ -35,6 +35,8 @@
 ..\output\sys.o: ..\System\sys.h
 ..\output\sys.o: ..\Drivers\servo.h
 ..\output\sys.o: ..\System\PWM.h
+..\output\sys.o: ..\System\timer.h
+..\output\sys.o: ..\Control\pid.h
 ..\output\sys.o: ..\Drivers\beep.h
 ..\output\sys.o: ..\Drivers\led.h
 ..\output\sys.o: ..\Drivers\key.h

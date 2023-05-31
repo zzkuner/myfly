@@ -47,7 +47,6 @@ void Servo_PWM_Init(u16 ARR,u16 PSC)
   //中央对齐模式3 计数器交替地向上和向下计数。输出比较中断标志位，只在计数器向下和向上计数时均被设置
 	TIM_TimeBaseInit(TIM3, & TIM_TimeBaseStructure);	//根据以上功能对定时器进行初始化
 	
-	
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;//选择定时器模式，TIM脉冲宽度调制模式2
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;//比较输出使能
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;//输出比较极性低
