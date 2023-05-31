@@ -6,6 +6,7 @@ void PID_Init()
 //    printf("PID_init begin \n");
     servo1_pid.Error=0.0;
     servo1_pid.lastError=0.0;
+	  servo1_pid.nexttolastError=0.0
     servo1_pid.integral=0.0;   
     servo1_pid.Diff=0.0;
 	

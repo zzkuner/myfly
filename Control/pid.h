@@ -16,6 +16,7 @@ typedef struct
     
     float Error;
     float lastError;
+		float nexttolastError;
     float integral;
     
     float Diff; 
